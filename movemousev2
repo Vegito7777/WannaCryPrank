@@ -1,0 +1,13 @@
+Add-Type -AssemblyName System.Windows.Forms
+$screenWidth = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Width
+$screenHeight = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds.Height
+$x = 0
+$y = 0
+$startTime = Get-Date
+
+while ((Get-Date) -lt $startTime.AddSeconds(60)) {
+   [System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point($x, $y)
+   $x = Get-Random -Minimum 0 -Maximum $screenWidth
+   $y = Get-Random -Minimum 0 -Maximum $screenHeight
+   Start-Sleep -Seconds 1
+}
